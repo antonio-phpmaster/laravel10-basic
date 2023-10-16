@@ -12,6 +12,8 @@ services:
       - "80:80"
     networks:
       - desenvolvimento
+    extra_hosts:
+      - host.docker.internal:host-gateway
   db:
     image: mysql:8.1
     container_name: mysql81

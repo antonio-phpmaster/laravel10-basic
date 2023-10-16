@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     vim \
     iputils-ping \
-    default-mysql-client 
+    default-mysql-client
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -29,7 +29,7 @@ RUN docker-php-ext-install pdo_mysql \
     sockets \
     zip \
     soap \
-    xml  
+    xml
 
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
@@ -47,16 +47,19 @@ RUN mkdir -p /home/$user/.composer && \
 #     &&  rm -rf /tmp/pear \
 #     &&  docker-php-ext-enable redis
 
+# Xdebug configuration
+COPY ./settings/php/90-xdebug.ini "${PHP_INI_DIR}/conf.d"
+
 # Install xdebug
 RUN pecl install xdebug-3.2.1 \
 	&& docker-php-ext-enable xdebug
 
 #Delete apache default configuration to apache user and group permissions
-RUN  rm /etc/apache2/envvars 
+RUN  rm /etc/apache2/envvars
 COPY ./settings/apache/envvars /etc/apache2/envvars
 
-# RUN service apache2 reload
-# RUN chown antonio:antonio /var/www
+#Setting the owner of /var/www directory
+RUN chown antonio:antonio /var/www
 
 # Set working directory
 WORKDIR /var/www
