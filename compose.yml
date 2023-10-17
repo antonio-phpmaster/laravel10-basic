@@ -20,7 +20,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: teste
+      MYSQL_DATABASE: laravel10_basic;
     ports:
       - 1722:3306
     volumes:
