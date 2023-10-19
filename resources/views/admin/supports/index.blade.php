@@ -19,4 +19,8 @@
         </tr>
     @endforeach
     </tbody>
+{{--    {{ $xss }} Protege de ataques XSS.--}}
+{{--    <?=$xss?> Nao protege de ataques XSS--}}
+
+
 </table>

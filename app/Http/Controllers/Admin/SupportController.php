@@ -19,6 +19,7 @@ class SupportController extends Controller
 //        return view('admin.supports.index', [
 //            'supports' => $supports
 //        ]);
-        return view ('admin.supports.index', compact('supports'));
+        $xss = '<script>alert("Cuidado com ataques XSS");</script>';
+        return view ('admin.supports.index', compact('supports', 'xss'));
     }
 }
