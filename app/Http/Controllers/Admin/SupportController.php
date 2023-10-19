@@ -16,8 +16,9 @@ class SupportController extends Controller
 
 //        dd($supports);
 
-        return view('admin.supports.index', [
-            'supports' => $supports
-        ]);
+//        return view('admin.supports.index', [
+//            'supports' => $supports
+//        ]);
+        return view ('admin.supports.index', compact('supports'));
     }
 }
