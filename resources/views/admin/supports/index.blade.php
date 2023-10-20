@@ -1,5 +1,5 @@
 <h1>Listagem dos suportes</h1>
-
+<a href="{{ route('supports.create') }}">Nova Duvida</a>
 <table>
     <thead>
         <th>assunto</th>
