@@ -28,8 +28,22 @@ class SupportController extends Controller
         return view('admin.supports.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Support $support)
     {
-        dd($request->all());
+//        dd($request->all());
+//        dd($request->only('subject', 'body'));
+//        dd($request->only(['subject', 'body']));
+//        dd($request->only(['body']));
+//        dd($request->only('body'));
+//        dd($request->body);
+//        dd($request->get('body'));//valor do body, caso seja vazio vai mostrar null
+//        dd($request->get('body', 'default'));//valor do body, caso seja vazio vai mostrar null
+//        dd($request->get('xpt', 'default'));//caso nao exista o campo vai mostrar o valor null
+//        dd($request->all());
+        $data = $request->all();
+//        Support::create($data);
+        $support->create($data);
+
+        return redirect()->route('supports.index');
     }
 }
